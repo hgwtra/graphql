@@ -136,10 +136,17 @@ class homePage extends HTMLElement {
   }
 
   
-
   connectedCallback() {
-    this.addEventListener("click", this.logOut);
+    this.addEventListener("click", (event) => {
+      if (event.target.id === "logout-btn") {
+        this.logOut();
+      } else{
+        // Handle other element's click event
+        return
+      }
+    });
   }
+  
   disconnectedCallback() {}
 
   render(data) {
